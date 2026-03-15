@@ -1,0 +1,132 @@
+.goal-celebration {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Flash */
+.celebration-flash {
+  position: absolute;
+  inset: 0;
+  background: white;
+  animation: flashBurst 0.3s ease-out forwards;
+}
+
+@keyframes flashBurst {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Burst Rays */
+.celebration-burst {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.burst-ray {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 200vh;
+  background: linear-gradient(180deg, rgba(255,215,0,0.8) 0%, transparent 50%);
+  transform-origin: center top;
+  animation: burstExpand 1s ease-out forwards;
+}
+
+@keyframes burstExpand {
+  0% { opacity: 0; transform: scaleY(0); }
+  20% { opacity: 1; }
+  100% { opacity: 0; transform: scaleY(1); }
+}
+
+/* Goal Text */
+.celebration-text-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  animation: textAppear 0.5s ease-out 0.3s backwards;
+}
+
+@keyframes textAppear {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(2); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+.goal-word {
+  font-family: var(--font-display);
+  font-size: 200px;
+  font-weight: 900;
+  color: white;
+  text-shadow: 0 0 20px rgba(255,255,255,0.8), 0 0 80px rgba(255,255,255,0.4), 0 10px 40px rgba(0,0,0,0.5);
+  letter-spacing: 20px;
+  animation: goalPulse 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes goalPulse {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.05); }
+}
+
+.scorer-name {
+  font-family: var(--font-heading);
+  font-size: 64px;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  margin-top: 20px;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+/* Confetti */
+.confetti-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.confetti-piece {
+  position: absolute;
+  top: -20px;
+  border-radius: 2px;
+  animation: confettiFall linear forwards;
+}
+
+@keyframes confettiFall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+
+/* Spotlights */
+.spotlight {
+  position: absolute;
+  bottom: 0;
+  width: 300px;
+  height: 150%;
+  background: linear-gradient(to top, rgba(255,255,255,0.3) 0%, transparent 100%);
+  animation: spotlightSweep 2s ease-in-out infinite;
+}
+
+.spotlight-left { left: -100px; transform: rotate(-30deg); }
+.spotlight-right { right: -100px; transform: rotate(30deg); animation-delay: 1s; }
+
+@keyframes spotlightSweep {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+/* Responsive */
+@media (max-width: 1280px) {
+  .goal-word { font-size: 120px; }
+  .scorer-name { font-size: 40px; }
+}
+
+@media (max-width: 768px) {
+  .goal-word { font-size: 72px; }
+  .scorer-name { font-size: 28px; }
+}

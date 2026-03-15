@@ -1,0 +1,137 @@
+/* ═══════════════════════════════════════════════════
+   Player Paddle — Premium 3D Air Hockey Striker
+   ═══════════════════════════════════════════════════ */
+
+/* --- Color Tokens per Player --- */
+.player-paddle.p1 {
+    --paddle-color: #3b82f6;
+    --paddle-secondary: #1d4ed8;
+    --paddle-glow: rgba(59, 130, 246, 0.6);
+}
+
+.player-paddle.p2 {
+    --paddle-color: #ef4444;
+    --paddle-secondary: #b91c1c;
+    --paddle-glow: rgba(239, 68, 68, 0.6);
+}
+
+/* --- Main Body --- */
+.player-paddle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, var(--paddle-color), #111);
+    box-shadow:
+        0 0 18px 4px var(--paddle-glow),
+        0 12px 28px rgba(0,0,0,0.55),
+        inset 0 4px 14px rgba(255,255,255,0.45),
+        inset 0 -8px 18px rgba(0,0,0,0.65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    will-change: transform;
+    pointer-events: none;
+    z-index: 20;
+    overflow: hidden;
+    /* Subtle breathing pulse */
+    animation: paddle-pulse 2s ease-in-out infinite;
+}
+
+/* --- Outer Glow Ring --- */
+.paddle-outer {
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    border: 3px solid var(--paddle-glow);
+    opacity: 0.7;
+    animation: ring-spin 6s linear infinite;
+    /* Dashed ring that rotates */
+    border-style: dashed;
+}
+
+/* --- Inner Raised Platform --- */
+.paddle-inner {
+    width: 62%;
+    height: 62%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, var(--paddle-secondary), #0a0a0a);
+    box-shadow:
+        inset 0 -3px 8px rgba(0,0,0,0.8),
+        0 4px 10px rgba(0,0,0,0.5);
+    border: 2px solid rgba(255,255,255,0.12);
+}
+
+/* --- Central Handle / Knob --- */
+.paddle-handle {
+    width: 28%;
+    height: 28%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, var(--paddle-color), #000);
+    box-shadow:
+        0 6px 10px rgba(0,0,0,0.6),
+        inset 0 3px 6px rgba(255,255,255,0.65);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgba(255,255,255,0.25);
+}
+
+/* --- Top Specular Highlight --- */
+.paddle-highlight {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: radial-gradient(120% 120% at 28% 18%,
+        rgba(255,255,255,0.55) 0%,
+        transparent 38%);
+    mix-blend-mode: overlay;
+    pointer-events: none;
+}
+
+/* --- AI Badge --- */
+.paddle-ai-badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: #000;
+    border: 2px solid var(--paddle-color);
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+    z-index: 2;
+}
+
+/* ═══════════════════════════════════════════════════
+   Animations
+   ═══════════════════════════════════════════════════ */
+
+/* Subtle breathing glow */
+@keyframes paddle-pulse {
+    0%, 100% {
+        box-shadow:
+            0 0 18px 4px var(--paddle-glow),
+            0 12px 28px rgba(0,0,0,0.55),
+            inset 0 4px 14px rgba(255,255,255,0.45),
+            inset 0 -8px 18px rgba(0,0,0,0.65);
+    }
+    50% {
+        box-shadow:
+            0 0 28px 8px var(--paddle-glow),
+            0 12px 28px rgba(0,0,0,0.55),
+            inset 0 4px 14px rgba(255,255,255,0.45),
+            inset 0 -8px 18px rgba(0,0,0,0.65);
+    }
+}
+
+/* Slowly rotating dashed ring */
+@keyframes ring-spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}

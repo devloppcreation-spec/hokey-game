@@ -1,0 +1,247 @@
+.premium-loading-screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.premium-loading-screen.phase-exit {
+  opacity: 0;
+  transform: scale(1.1);
+}
+
+/* === BACKGROUND === */
+
+.loading-background {
+  position: absolute;
+  inset: 0;
+}
+
+.bg-gradient {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse 80% 50% at 50% 30%, rgba(0,50,100,0.3) 0%, transparent 70%),
+    linear-gradient(180deg, #0a0a1a 0%, #151530 50%, #0a0a1a 100%);
+}
+
+.bg-particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.bg-particles .particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--premium-gold);
+  border-radius: 50%;
+  opacity: 0;
+  animation: particleFloat 3s ease-in-out infinite;
+}
+
+@keyframes particleFloat {
+  0%, 100% { opacity: 0; transform: translateY(0) scale(0); }
+  50% { opacity: 0.6; transform: translateY(-50px) scale(1); }
+}
+
+.bg-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 70% at 50% 50%, transparent 30%, rgba(0,0,0,0.6) 100%);
+}
+
+/* === CONTENT === */
+
+.loading-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* === LOGO === */
+
+.loading-logo-container {
+  position: relative;
+  margin-bottom: 60px;
+}
+
+.logo-glow-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  border: 2px solid var(--premium-gold);
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: ringPulse 2s ease-in-out infinite;
+}
+
+@keyframes ringPulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+  50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.1; }
+}
+
+.logo-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, var(--premium-gold) 0%, transparent 70%);
+  opacity: 0.3;
+  filter: blur(40px);
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.2; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.4; transform: translate(-50%, -50%) scale(1.2); }
+}
+
+.loading-logo-image {
+  position: relative;
+  max-width: 300px;
+  max-height: 120px;
+  filter: drop-shadow(0 0 30px rgba(255,215,0,0.3));
+  animation: logoFloat 3s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.loading-logo-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: logoFloat 3s ease-in-out infinite;
+}
+
+.logo-sports {
+  font-family: 'Oswald', sans-serif;
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 12px;
+  text-transform: uppercase;
+}
+
+.logo-arena {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 84px;
+  background: linear-gradient(180deg, #FFE55C 0%, #FFD700 50%, #B8960C 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 6px;
+  margin-top: -10px;
+  filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.5));
+}
+
+/* === PROGRESS BAR === */
+
+.loading-progress-container {
+  width: 400px;
+  margin-bottom: 40px;
+}
+
+.progress-track {
+  position: relative;
+  height: 8px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--premium-gold-dark) 0%, var(--premium-gold) 50%, var(--premium-gold-light) 100%);
+  border-radius: 4px;
+  transition: width 0.2s ease-out;
+  box-shadow: 0 0 20px var(--premium-gold);
+}
+
+.progress-glow {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  background: var(--premium-gold);
+  border-radius: 50%;
+  filter: blur(15px);
+  opacity: 0.8;
+  transition: left 0.2s ease-out;
+}
+
+.progress-text {
+  margin-top: 16px;
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 4px;
+}
+
+.phase-complete .progress-text {
+  color: var(--state-success);
+  animation: readyPulse 0.5s ease-in-out;
+}
+
+@keyframes readyPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* === LOADING TIP === */
+
+.loading-tip {
+  max-width: 500px;
+}
+
+.tip-text {
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  color: rgba(255,255,255,0.5);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tip-icon {
+  font-size: 24px;
+}
+
+/* === STADIUM SILHOUETTE === */
+
+.loading-stadium-silhouette {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 150px;
+  background: 
+    linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.8) 100%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 150'%3E%3Cpath d='M0 150 L0 100 Q300 50 600 80 Q900 110 1200 60 L1200 150 Z' fill='%23111122'/%3E%3C/svg%3E");
+  background-size: cover;
+  opacity: 0.8;
+}
+
+/* === RESPONSIVE === */
+
+@media (max-width: 768px) {
+  .loading-progress-container { width: 280px; }
+  .logo-arena { font-size: 64px; }
+  .logo-sports { font-size: 32px; }
+}

@@ -1,0 +1,52 @@
+.page-wipe {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.wipe-panel {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 34%;
+  background: var(--wipe-color);
+}
+
+.wipe-1 { left: 0; }
+.wipe-2 { left: 33%; }
+.wipe-3 { left: 66%; right: 0; width: auto; }
+
+/* Wipe In */
+.phase-wipe-in .wipe-panel {
+  animation: wipeEnter 0.4s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+.phase-wipe-in .wipe-1 { animation-delay: 0ms; }
+.phase-wipe-in .wipe-2 { animation-delay: 50ms; }
+.phase-wipe-in .wipe-3 { animation-delay: 100ms; }
+
+@keyframes wipeEnter {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+
+/* Hold */
+.phase-hold .wipe-panel {
+  transform: translateY(0);
+}
+
+/* Wipe Out */
+.phase-wipe-out .wipe-panel {
+  animation: wipeExit 0.4s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+.phase-wipe-out .wipe-1 { animation-delay: 100ms; }
+.phase-wipe-out .wipe-2 { animation-delay: 50ms; }
+.phase-wipe-out .wipe-3 { animation-delay: 0ms; }
+
+@keyframes wipeExit {
+  from { transform: translateY(0); }
+  to { transform: translateY(100%); }
+}

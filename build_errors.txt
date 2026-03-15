@@ -1,0 +1,2 @@
+﻿src/components/stadium/StadiumBackground.tsx(6,35): error TS6198: All destructured elements are unused.
+src/game/renderer/GameRenderer.ts(29,13): error TS6133: 'puckRenderer' is declared but its value is never read.

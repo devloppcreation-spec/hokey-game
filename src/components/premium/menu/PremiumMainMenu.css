@@ -1,0 +1,157 @@
+/* ============================================
+   PREMIUM MAIN MENU COMPONENT
+   ============================================ */
+.premium-main-menu {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 10vh;
+  z-index: 100;
+  overflow: hidden;
+}
+
+/* --- Menu Header --- */
+.menu-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 60px;
+  animation: floatUp 6s ease-in-out infinite;
+}
+
+.logo-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-glow {
+  position: absolute;
+  width: 300px;
+  height: 100px;
+  background: radial-gradient(ellipse, rgba(255, 215, 0, 0.4) 0%, transparent 70%);
+  filter: blur(20px);
+  z-index: 1;
+  animation: pulseGlow 3s infinite alternate;
+}
+
+.main-logo {
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  line-height: 1;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 10px 30px rgba(0,0,0,0.8);
+  letter-spacing: 4px;
+}
+
+.tagline {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  color: var(--premium-gold-light);
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  margin-top: 16px;
+  text-shadow: 0 4px 8px rgba(0,0,0,0.8);
+  opacity: 0.8;
+}
+
+/* --- Content Area --- */
+.menu-content-area {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.step-container {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* --- Mode Step Layout --- */
+.mode-cards-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  padding: 20px;
+}
+
+.back-button {
+  position: absolute;
+  top: -80px;
+  left: 40px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 32px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  color: white;
+  letter-spacing: 2px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.back-button svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* --- Transitions between steps --- */
+.sport-step {
+  animation: slideFadeInRight 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.mode-step {
+  animation: slideFadeInLeft 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes slideFadeInRight {
+  0% { transform: translateX(50px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideFadeInLeft {
+  0% { transform: translateX(-50px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 1279px) and (min-width: 768px) {
+  .main-logo { font-size: 140px; }
+  .mode-cards-container { gap: 24px; }
+  .back-button {
+    top: -60px;
+    padding: 12px 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  .main-logo { font-size: 80px; }
+  .tagline { font-size: var(--text-sm); }
+  .menu-header { margin-bottom: 30px; }
+  
+  .mode-cards-container {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .back-button {
+    position: static;
+    margin-bottom: 24px;
+  }
+}

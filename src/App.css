@@ -1,0 +1,59 @@
+/* ============================================
+   App-level Styles
+   ============================================ */
+
+/* Settings Button - Fixed position */
+.settings-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  padding: 0;
+  line-height: 1;
+}
+
+.settings-button:hover {
+  background: rgba(0, 0, 0, 0.8);
+  transform: rotate(45deg) scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.settings-button:active {
+  transform: rotate(45deg) scale(0.95);
+}
+
+/* For large tactile tables */
+@media (min-width: 1920px) {
+  .settings-button {
+    width: 80px;
+    height: 80px;
+    font-size: 36px;
+    top: 30px;
+    right: 30px;
+  }
+}
+
+/* For mobile */
+@media (max-width: 768px) {
+  .settings-button {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    top: 15px;
+    right: 15px;
+  }
+}

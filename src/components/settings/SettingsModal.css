@@ -1,0 +1,320 @@
+/* Overlay */
+.settings-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: settingsFadeIn 0.3s ease-out;
+}
+
+@keyframes settingsFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Modal */
+.settings-modal {
+  background: linear-gradient(180deg, rgba(30,30,40,0.98) 0%, rgba(15,15,25,0.99) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.6),
+    0 0 100px rgba(255, 215, 0, 0.1);
+  animation: settingsSlideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes settingsSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Header */
+.settings-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 28px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.settings-title {
+  font-family: var(--premium-font-heading, 'Oswald', sans-serif);
+  font-size: 28px;
+  color: white;
+  margin: 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.settings-close {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.settings-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(90deg);
+}
+
+/* Content */
+.settings-content {
+  padding: 24px 28px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* Sections */
+.settings-section {
+  margin-bottom: 32px;
+}
+
+.settings-section:last-child {
+  margin-bottom: 0;
+}
+
+.section-title {
+  font-family: var(--premium-font-heading, 'Oswald', sans-serif);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin: 0 0 16px 0;
+}
+
+/* Setting Rows */
+.setting-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.setting-row:last-child {
+  border-bottom: none;
+}
+
+.setting-label {
+  font-family: var(--premium-font-body, 'Roboto', sans-serif);
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Score Control */
+.setting-control {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.score-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.score-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.score-btn:active {
+  transform: scale(0.95);
+}
+
+.score-value {
+  font-family: var(--premium-font-score, 'Russo One', sans-serif);
+  font-size: 32px;
+  color: #FFD700;
+  min-width: 50px;
+  text-align: center;
+}
+
+/* Toggle Switch */
+.toggle-switch {
+  width: 64px;
+  height: 36px;
+  border-radius: 18px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.3s ease;
+}
+
+.toggle-switch.off {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.toggle-switch.on {
+  background: #00D68F;
+}
+
+.toggle-knob {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 28px;
+  height: 28px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.toggle-switch.on .toggle-knob {
+  transform: translateX(28px);
+}
+
+/* Volume Control */
+.volume-control {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.volume-slider {
+  width: 120px;
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #FFD700;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);
+}
+
+.volume-value {
+  font-family: var(--premium-font-body, 'Roboto', sans-serif);
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  min-width: 45px;
+}
+
+/* About */
+.about-text {
+  font-family: var(--premium-font-body, 'Roboto', sans-serif);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Footer */
+.settings-footer {
+  padding: 20px 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.settings-done-btn {
+  width: 100%;
+  height: 60px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #FFE55C 0%, #FFD700 50%, #B8960C 100%);
+  border: none;
+  color: #1a1a1a;
+  font-family: var(--premium-font-heading, 'Oswald', sans-serif);
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+.settings-done-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+}
+
+.settings-done-btn:active {
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (min-width: 1920px) {
+  .settings-modal {
+    max-width: 600px;
+  }
+
+  .setting-label {
+    font-size: 22px;
+  }
+
+  .toggle-switch {
+    width: 80px;
+    height: 44px;
+  }
+
+  .toggle-knob {
+    width: 36px;
+    height: 36px;
+  }
+
+  .toggle-switch.on .toggle-knob {
+    transform: translateX(36px);
+  }
+
+  .score-btn {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .settings-modal {
+    width: 95%;
+    max-height: 85vh;
+  }
+
+  .settings-header {
+    padding: 20px;
+  }
+
+  .settings-content {
+    padding: 20px;
+  }
+
+  .setting-label {
+    font-size: 16px;
+  }
+}

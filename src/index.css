@@ -1,0 +1,125 @@
+@import './styles/premium-fonts.css';
+@import './styles/premium-design-system.css';
+
+/*
+ * ============================================================
+ *  CSS Custom Properties – Brand-Configurable Design Tokens
+ *
+ *  These are the default values matching defaultBrand.ts.
+ *  At runtime, applyCSSProperties() overwrites them on :root.
+ * ============================================================
+ */
+
+:root {
+  /* ── Base Colors ─────────────────────────── */
+  --color-primary: #1E40AF;
+  --color-secondary: #3B82F6;
+  --color-accent: #F59E0B;
+  --color-background: #0F172A;
+  --color-surface: #1E293B;
+
+  /* ── Game Colors ─────────────────────────── */
+  --color-ice-color: #E8F4FC;
+  --color-ice-pattern: #D4EAF7;
+  --color-line-color: #DC2626;
+  --color-goal-color: #EF4444;
+
+  /* ── Player 1 ────────────────────────────── */
+  --color-player1-primary: #DC2626;
+  --color-player1-secondary: #FCA5A5;
+  --color-player1-stick: #92400E;
+  --color-player1-trail: rgba(220, 38, 38, 0.35);
+
+  /* ── Player 2 ────────────────────────────── */
+  --color-player2-primary: #2563EB;
+  --color-player2-secondary: #93C5FD;
+  --color-player2-stick: #92400E;
+  --color-player2-trail: rgba(37, 99, 235, 0.35);
+
+  /* ── Text ────────────────────────────────── */
+  --color-text-primary: #F8FAFC;
+  --color-text-secondary: #94A3B8;
+  --color-text-accent: #F59E0B;
+  --color-text-on-primary: #FFFFFF;
+  --color-text-on-secondary: #FFFFFF;
+
+  /* ── Scoreboard ──────────────────────────── */
+  --color-scoreboard-background: #1E293B;
+  --color-scoreboard-text: #F8FAFC;
+  --color-scoreboard-highlight: #F59E0B;
+  --color-scoreboard-border: #334155;
+
+  /* ── Puck ────────────────────────────────── */
+  --color-puck-fill: #1E1E1E;
+  --color-puck-stroke: #000000;
+  --color-puck-glow: rgba(255, 255, 255, 0.25);
+
+  /* ── Typography ──────────────────────────── */
+  --font-primary: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-secondary: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Outfit', 'Inter', system-ui, sans-serif;
+  --font-monospace: 'JetBrains Mono', 'Fira Code', monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
+  --text-xxl: 2rem;
+  --text-display: 3.5rem;
+  --text-score: 5rem;
+
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-bold: 700;
+  --weight-black: 900;
+}
+
+/*
+ * ============================================================
+ *  Global Styles
+ * ============================================================
+ */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-primary);
+  color: var(--color-text-primary);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  line-height: 1.2;
+}
+
+code,
+pre {
+  font-family: var(--font-monospace);
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

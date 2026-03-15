@@ -1,0 +1,190 @@
+/* GameBalls CSS - Hardware Accelerated */
+
+.game-ball {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: white;
+    border-radius: 50%;
+    z-index: 10;
+    pointer-events: none;
+    overflow: hidden;
+    will-change: transform; /* Important for 60fps rendering */
+}
+
+/* ──────────────────────────────────────────────────────────
+   Hockey Puck
+─────────────────────────────────────────────────────────── */
+.game-ball.hockey {
+    background-color: #222;
+    background-image: repeating-linear-gradient(90deg, #111 0px, #111 2px, #333 2px, #333 4px); /* Ribbed edge */
+    border: 2px solid #555;
+    box-shadow: 
+        0 10px 20px rgba(0,0,0,0.6),
+        inset 0 4px 8px rgba(255,255,255,0.2),
+        inset 0 -8px 16px rgba(0,0,0,0.7);
+}
+
+.hockey .puck-inner {
+    position: absolute;
+    inset: 12%;
+    border-radius: 50%;
+    /* color injected via JS */
+    box-shadow: 
+        inset 0 2px 4px rgba(255,255,255,0.5),
+        inset 0 -4px 8px rgba(0,0,0,0.6),
+        0 2px 4px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.hockey .puck-highlight {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: radial-gradient(120% 120% at 30% 20%, rgba(255,255,255,0.6) 0%, transparent 40%);
+    mix-blend-mode: overlay;
+    pointer-events: none;
+}
+
+/* ──────────────────────────────────────────────────────────
+   Basketball
+─────────────────────────────────────────────────────────── */
+.game-ball.basketball {
+    background: radial-gradient(circle at 35% 35%, #ff8a65 0%, #e64a19 40%, #bf360c 80%, #3e1104 100%);
+    box-shadow: 
+        0 10px 20px rgba(0,0,0,0.5),
+        inset 8px 8px 12px rgba(255,255,255,0.3),
+        inset -8px -8px 16px rgba(0,0,0,0.7);
+}
+
+.basketball .ball-texture {
+    position: absolute;
+    inset: 0;
+    background-image: 
+        radial-gradient(#000 1px, transparent 1px),
+        radial-gradient(#000 1px, transparent 1px);
+    background-size: 6px 6px;
+    background-position: 0 0, 3px 3px;
+    opacity: 0.15;
+    mix-blend-mode: overlay;
+}
+
+.basketball .ball-lines {
+    position: absolute;
+    background: #3e1104;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.8);
+}
+
+.basketball .horizontal {
+    width: 100%; height: 3px;
+    top: 50%; left: 0;
+    transform: translateY(-50%);
+}
+
+.basketball .vertical {
+    width: 3px; height: 100%;
+    left: 50%; top: 0;
+    transform: translateX(-50%);
+}
+
+.basketball .curve-left, .basketball .curve-right {
+    width: 50%; height: 100%;
+    border: 3px solid #3e1104;
+    border-radius: 100%;
+    top: 0;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.8);
+}
+
+.basketball .curve-left {
+    left: -15%;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+}
+
+.basketball .curve-right {
+    right: -15%;
+    border-left-color: transparent;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+}
+
+/* ──────────────────────────────────────────────────────────
+   Soccer
+─────────────────────────────────────────────────────────── */
+.game-ball.soccer {
+    background: radial-gradient(circle at 35% 35%, #ffffff 0%, #dddddd 40%, #aaaaaa 80%, #555555 100%);
+    box-shadow: 
+        0 8px 16px rgba(0,0,0,0.4),
+        inset 6px 6px 12px rgba(255,255,255,0.8),
+        inset -8px -8px 16px rgba(0,0,0,0.6);
+}
+
+.soccer-pattern {
+    position: absolute;
+    inset: 0;
+    /* Improved soccer pattern using a SVG background image for crisp pentagons */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon points="50,20 80,40 70,75 30,75 20,40" fill="%23222" /><line x1="50" y1="20" x2="50" y2="0" stroke="%23222" stroke-width="2"/><line x1="80" y1="40" x2="100" y2="30" stroke="%23222" stroke-width="2"/><line x1="70" y1="75" x2="85" y2="95" stroke="%23222" stroke-width="2"/><line x1="30" y1="75" x2="15" y2="95" stroke="%23222" stroke-width="2"/><line x1="20" y1="40" x2="0" y2="30" stroke="%23222" stroke-width="2"/></svg>');
+    background-size: cover;
+    mix-blend-mode: multiply;
+    opacity: 0.8;
+}
+
+/* ──────────────────────────────────────────────────────────
+   Tennis
+─────────────────────────────────────────────────────────── */
+.game-ball.tennis {
+    background: radial-gradient(circle at 35% 35%, #e6ee9c 0%, #cddc39 40%, #9e9d24 80%, #3e3e0e 100%);
+    box-shadow: 
+        0 6px 12px rgba(0,0,0,0.3),
+        inset 4px 4px 8px rgba(255,255,255,0.6),
+        inset -6px -6px 12px rgba(0,0,0,0.5);
+}
+
+.tennis-nap {
+    position: absolute;
+    inset: 0;
+    /* SVg noise filter data URI to simulate fuzz */
+    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)"/></svg>');
+    opacity: 0.25;
+    mix-blend-mode: overlay;
+}
+
+.tennis-line {
+    position: absolute;
+    width: 100%; height: 100%;
+    border: 3px solid rgba(255,255,255,0.9);
+    border-radius: 50%;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.tennis-line.one {
+    transform: scale(0.65) translateX(-35%);
+    clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%);
+}
+
+.tennis-line.two {
+    transform: scale(0.65) translateX(35%);
+    clip-path: polygon(0% 0%, 50% 0%, 50% 100%, 0% 100%);
+}
+
+/* ──────────────────────────────────────────────────────────
+   Volleyball
+─────────────────────────────────────────────────────────── */
+.game-ball.volleyball {
+    background: radial-gradient(circle at 35% 35%, #ffffff 0%, #e0e0e0 40%, #b0b0b0 80%, #666666 100%);
+    box-shadow: 
+        0 8px 16px rgba(0,0,0,0.3),
+        inset 6px 6px 12px rgba(255,255,255,0.9),
+        inset -8px -8px 16px rgba(0,0,0,0.5);
+}
+
+.volleyball-pattern {
+    position: absolute;
+    inset: 0;
+    /* Smoother, slightly embossed seams for volleyball */
+    background: 
+        linear-gradient(45deg, transparent 48%, rgba(0,0,0,0.2) 49%, rgba(255,255,255,0.8) 50%, rgba(0,0,0,0.1) 51%, transparent 52%),
+        linear-gradient(-45deg, transparent 48%, rgba(0,0,0,0.2) 49%, rgba(255,255,255,0.8) 50%, rgba(0,0,0,0.1) 51%, transparent 52%),
+        linear-gradient(0deg, transparent 48%, rgba(0,0,0,0.2) 49%, rgba(255,255,255,0.8) 50%, rgba(0,0,0,0.1) 51%, transparent 52%);
+}

@@ -1,0 +1,9 @@
+﻿
+> hockey-game@0.0.0 build
+> tsc -b && vite build
+
+src/components/game/PremiumPlayingField.tsx(1,1): error TS6192: All imports in import declaration are unused.
+src/components/game/PremiumPlayingField.tsx(2,10): error TS1484: 'SportType' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/components/game/PremiumPlayingField.tsx(27,34): error TS2339: Property 'colors' does not exist on type 'SportTheme'.
+src/components/game/PremiumPlayingField.tsx(28,32): error TS2339: Property 'colors' does not exist on type 'SportTheme'.
+src/components/game/PremiumPlayingField.tsx(29,33): error TS2339: Property 'colors' does not exist on type 'SportTheme'.

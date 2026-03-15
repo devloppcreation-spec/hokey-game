@@ -1,0 +1,259 @@
+.single-signin-screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background: linear-gradient(180deg, #0a0a1a 0%, #151530 100%);
+  position: relative;
+}
+
+.back-button {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(-5px);
+}
+
+.signin-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 42px;
+  color: white;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* VS Display */
+.vs-display {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 50px;
+}
+
+.vs-player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.player-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.player-1-avatar {
+  background: linear-gradient(180deg, #3399ff 0%, #0066cc 100%);
+}
+
+.ai-avatar {
+  background: linear-gradient(180deg, #FFD700 0%, #B8960C 100%);
+  animation: aiPulse 2s ease-in-out infinite;
+}
+
+@keyframes aiPulse {
+  0%, 100% { box-shadow: 0 8px 30px rgba(255, 215, 0, 0.3); }
+  50% { box-shadow: 0 8px 50px rgba(255, 215, 0, 0.6); }
+}
+
+.player-label {
+  font-family: 'Oswald', sans-serif;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.vs-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 48px;
+  color: #FFD700;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+/* Sign In Card */
+.signin-card {
+  width: 100%;
+  max-width: 450px;
+  background: rgba(20, 20, 40, 0.8);
+  border: 2px solid #0066cc;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.4),
+    0 0 30px rgba(0, 102, 204, 0.2);
+}
+
+.card-header {
+  padding: 30px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.player-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 0 auto 15px;
+  background: linear-gradient(180deg, #3399ff 0%, #0066cc 100%);
+  box-shadow: 0 5px 20px rgba(0, 102, 204, 0.4);
+}
+
+.card-header h2 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 28px;
+  color: white;
+  margin: 0 0 8px;
+}
+
+.card-header p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+}
+
+.card-content {
+  padding: 30px;
+}
+
+.email-input {
+  width: 100%;
+  height: 56px;
+  padding: 0 20px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: white;
+  font-size: 16px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.email-input:focus {
+  outline: none;
+  border-color: #0066cc;
+}
+
+.email-input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.terms-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.terms-checkbox input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+}
+
+.terms-checkbox span {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.terms-link {
+  color: #ff4466;
+  text-decoration: none;
+}
+
+.terms-link:hover {
+  text-decoration: underline;
+}
+
+.error-message {
+  color: #ff4466;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.ready-button {
+  width: 100%;
+  height: 60px;
+  background: linear-gradient(180deg, #3399ff 0%, #0066cc 100%);
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-family: 'Oswald', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 5px 20px rgba(0, 102, 204, 0.4);
+}
+
+.ready-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0, 102, 204, 0.5);
+}
+
+.ready-button:active {
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (min-width: 1920px) {
+  .signin-card {
+    max-width: 550px;
+  }
+  
+  .email-input {
+    height: 70px;
+    font-size: 20px;
+  }
+  
+  .ready-button {
+    height: 75px;
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .signin-title {
+    font-size: 28px;
+  }
+  
+  .vs-display {
+    gap: 20px;
+  }
+  
+  .player-avatar {
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+  }
+  
+  .vs-text {
+    font-size: 32px;
+  }
+  
+  .signin-card {
+    max-width: 100%;
+  }
+}

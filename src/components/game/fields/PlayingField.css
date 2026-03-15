@@ -1,0 +1,124 @@
+/* Container with perspective */
+.game-field-wrapper {
+  perspective: 1200px;
+  perspective-origin: 50% 35%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+/* 3D Field Container */
+.playing-field {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  transform: rotateX(12deg);
+  transform-style: preserve-3d;
+  border-radius: 20px;
+  overflow: visible;
+}
+
+/* Field SVG */
+.field-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+  position: relative;
+  z-index: 2;
+}
+
+/* 3D Frame/Border behind field */
+.playing-field::before {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  background: linear-gradient(
+    180deg,
+    #555555 0%,
+    #333333 50%,
+    #222222 100%
+  );
+  border-radius: 28px;
+  z-index: 0;
+  transform: translateZ(-15px);
+  box-shadow: 
+    0 8px 0 #1a1a1a,
+    0 15px 0 #111111;
+}
+
+/* Top shine reflection */
+.playing-field::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 5%;
+  right: 5%;
+  height: 35%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.03) 50%,
+    transparent 100%
+  );
+  border-radius: 16px 16px 50% 50%;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Shadow under the field */
+.field-shadow {
+  position: absolute;
+  bottom: -50px;
+  left: 10%;
+  right: 10%;
+  height: 40px;
+  background: radial-gradient(
+    ellipse 100% 100%,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0.2) 50%,
+    transparent 80%
+  );
+  filter: blur(15px);
+  z-index: -1;
+  transform: translateZ(-30px);
+}
+
+/* Side edges for depth */
+.field-edge-left,
+.field-edge-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 12px;
+  z-index: 1;
+}
+
+.field-edge-left {
+  left: -12px;
+  background: linear-gradient(90deg, #222 0%, #444 100%);
+  border-radius: 20px 0 0 20px;
+  transform: translateZ(-8px);
+}
+
+.field-edge-right {
+  right: -12px;
+  background: linear-gradient(90deg, #444 0%, #222 100%);
+  border-radius: 0 20px 20px 0;
+  transform: translateZ(-8px);
+}
+
+/* Bottom edge for depth */
+.field-edge-bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -12px;
+  height: 12px;
+  background: linear-gradient(180deg, #333 0%, #1a1a1a 100%);
+  border-radius: 0 0 20px 20px;
+  z-index: 1;
+  transform: translateZ(-8px);
+}
