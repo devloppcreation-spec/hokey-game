@@ -8,7 +8,7 @@
  * This component only defines the visual appearance and size.
  */
 
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import './PlayerPaddle.css';
 
 interface PlayerPaddleProps {

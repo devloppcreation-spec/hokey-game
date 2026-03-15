@@ -8,7 +8,7 @@
  * This component only defines the visual appearance.
  */
 
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import type { SportType } from '@/types/sportTheme.types';
 import './GameBalls.css';
 
